@@ -1,11 +1,13 @@
-package main
+package playlist
 
 func main() {
 
-	p := initPlaylist()
+	p := InitPlaylist()
 	p.AddSong("song1", 40)
 	p.AddSong("song2", 40)
 	p.AddSong("song3", 40)
-	infoLog := initLogger()
+	infoLog, f := initLogger()
+	defer f.Close()
+	infoLog.Println("INIT")
 	managePlaylist(p, infoLog)
 }
